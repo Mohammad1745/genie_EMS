@@ -4,6 +4,9 @@
 namespace App\Http\Services;
 
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Date;
+
 class Service
 {
     /**
@@ -81,6 +84,16 @@ class Service
     public function deleteWhere (array $where)
     {
         return $this->repository->deleteWhere( $where);
+    }
+
+    /**
+     * @param Carbon $date
+     * @param array $fields
+     * @return mixed
+     */
+    public function whereDate (Carbon $date, array $fields=[])
+    {
+        return $this->repository->whereDate( $date, $fields);
     }
 
     /**

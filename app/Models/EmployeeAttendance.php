@@ -13,7 +13,7 @@ class EmployeeAttendance extends Model
     /**
      * @var string[]
      */
-    protected $fillable = ['user_id', 'check_in', 'check_out', 'office_hour'];
+    protected $fillable = ['employee_id', 'check_in', 'check_out', 'office_hour'];
 
     /**
      * @return BelongsTo

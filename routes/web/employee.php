@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/check_in', [DashboardController::class, 'checkIn'])->name('checkIn');
+Route::get('/check_out', [DashboardController::class, 'checkOut'])->name('checkOut');
 

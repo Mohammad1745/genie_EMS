@@ -4,6 +4,9 @@
 namespace App\Http\Repositories;
 
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Date;
+
 class Repository
 {
     /**
@@ -84,6 +87,19 @@ class Repository
     {
         return $this->model->where( $where)->delete();
     }
+
+    /**
+     * @param Carbon $date
+     * @param array $fields
+     * @return mixed
+     */
+    public function whereDate (Carbon $date, array $fields=[])
+    {
+        return count($fields) ?
+            $this->model->select($fields)->whereDate('created_at', $date)->get()
+            : $this->model->whereDate('created_at', $date)->get();
+    }
+
 
     /**
      * @param array $where
