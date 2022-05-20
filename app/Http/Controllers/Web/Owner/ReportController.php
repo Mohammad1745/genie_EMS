@@ -34,7 +34,7 @@ class ReportController extends Controller
      */
     public function index (Request $request): Factory|View|Application
     {
-        $data['date'] = $value = $request->query('date') ?
+        $data['date'] = $request->query('date') ?
             $request->query('date') :
             Carbon::now()->format('d-m-Y');
         $data['dates'] = $this->service->dateList();
