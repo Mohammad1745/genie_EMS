@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Owner\EmployeeController;
+use App\Http\Controllers\Web\Owner\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,4 @@ Route::get('/employee/create', [EmployeeController::class, 'create'])->name('emp
 Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store');
 
 
-Route::get('/reports', function(){
-    return 'Reports';
-})->name('report');
+Route::get('/reports', [ReportController::class, 'index'])->name('report');

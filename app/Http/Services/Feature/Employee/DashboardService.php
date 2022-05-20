@@ -31,7 +31,7 @@ class DashboardService extends ResponseService
     public function getAttendanceStatus (): int
     {
         try {
-            $data = $this->employeeAttendanceService->whereDate(Carbon::today());
+            $data = $this->employeeAttendanceService->whereDate(Carbon::today(), ['employee_id' => Auth::user()->employee->id]);
             if(count($data)==0){
                 return NOT_CHECKED_IN;
             }
@@ -50,7 +50,7 @@ class DashboardService extends ResponseService
     public function checkIn (): array
     {
         try {
-            $exists = $this->employeeAttendanceService->whereDate(Carbon::today());
+            $exists = $this->employeeAttendanceService->whereDate(Carbon::today(), ['employee_id' => Auth::user()->employee->id]);
             if(count($exists)){
                 return $this->response()->success(__("Already Checked In"));
             }
@@ -70,7 +70,7 @@ class DashboardService extends ResponseService
     public function checkOut (): array
     {
         try {
-            $data = $this->employeeAttendanceService->whereDate(Carbon::today());
+            $data = $this->employeeAttendanceService->whereDate(Carbon::today(), ['employee_id' => Auth::user()->employee->id]);
             if(count($data)==0){
                 return $this->response()->success(__("You are not checked in"));
             }

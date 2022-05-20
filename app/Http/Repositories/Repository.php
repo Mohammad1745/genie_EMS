@@ -90,14 +90,15 @@ class Repository
 
     /**
      * @param Carbon $date
+     * @param array $where
      * @param array $fields
      * @return mixed
      */
-    public function whereDate (Carbon $date, array $fields=[])
+    public function whereDate (Carbon $date, array $where, array $fields=[])
     {
         return count($fields) ?
-            $this->model->select($fields)->whereDate('created_at', $date)->get()
-            : $this->model->whereDate('created_at', $date)->get();
+            $this->model->select($fields)->where($where)->whereDate('created_at', $date)->get()
+            : $this->model->where($where)->whereDate('created_at', $date)->get();
     }
 
 
