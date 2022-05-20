@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('auth.layout.index')
 
 @section('title', 'Sign Up - '.TITLE_BASE)
 
