@@ -19,16 +19,12 @@ class EmployeeService extends Service
         parent::__construct( $repository);
     }
 
-    /**
-     * @param array $data
-     * @return array
-     */
-    public function formatEmployeeData (array $data): array
+    public function formatEmployeeData (int $userId, int $ownerId): array
     {
-        if ($data){
+        if ($userId && $ownerId){
             return array(
-                'user_id' => $data['user_id'],
-                'owner_id' => $data['owner_id'],
+                'user_id' => $userId,
+                'owner_id' => $ownerId,
             );
         }
         return [];
