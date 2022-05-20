@@ -9,7 +9,7 @@
     <div class="vh-100 d-flex justify-content-center align-items-center">
         <div class="form border rounded shadow px-4 py-3">
 
-            <div class="form-header text-center fw-bold"> Owner Sign Up </div>
+            <div class="form-header text-center fw-bold"> Login </div>
 
             {{ Form::open(['route'=> 'loginProcess','method' => 'post', 'id' => 'auth_form', 'class' => 'main-form']) }}
                 <div class="form-group my-2">
@@ -31,6 +31,8 @@
                     <button class="btn btn-primary" type="submit">{{__('Login')}}</button>
                 </div>
             {{ Form::close() }}
+
+            <div class="form-footer text-center text-secondary mt-2"> Or, Create an <strong>Owner</strong> account from <a class="" href="{{route('signup')}}">Sign Up</a> </div>
         </div>
     </div>
 @endsection
