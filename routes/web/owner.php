@@ -21,3 +21,4 @@ Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.s
 
 
 Route::get('/reports', [ReportController::class, 'index'])->name('report');
+Route::get('/reports/employee/{userId}', [ReportController::class, 'employeeReport'])->name('report.employee');

@@ -33,13 +33,8 @@
         <div class="d-flex justify-content-start">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Date: {{$date}}
+                    User Name: {{' '}}
                 </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    @foreach($dates as $date)
-                        <li><a class="dropdown-item" href="{{route('owner.report', ['date' => $date])}}">{{$date}}</a></li>
-                    @endforeach
-                </ul>
             </div>
         </div>
 
@@ -48,7 +43,7 @@
                 <table id="table_id" class="display report-list">
                     <thead>
                     <tr>
-                        <th>User Name</th>
+                        <th>Date</th>
                         <th>Check In</th>
                         <th>Check Out</th>
                         <th>Office Hour</th>
@@ -57,10 +52,10 @@
                     <tbody>
                         @foreach($reports as $key => $report)
                             <tr>
-                                <td><a class="report-list-item" href="{{route('owner.report.employee', $report['user_id'])}}"> {{$report['username']}}</a></td>
-                                <td><a class="report-list-item" href="{{route('owner.report.employee', $report['user_id'])}}"> {{$report['check_in']}}</a></td>
-                                <td><a class="report-list-item" href="{{route('owner.report.employee', $report['user_id'])}}"> {{$report['check_out']}}</a></td>
-                                <td><a class="report-list-item" href="{{route('owner.report.employee', $report['user_id'])}}"> {{$report['office_hour']}}</a></td>
+                                <td><a class="report-list-item" href="#"> {{$report['date']}}</a></td>
+                                <td><a class="report-list-item" href="#"> {{$report['check_in']}}</a></td>
+                                <td><a class="report-list-item" href="#"> {{$report['check_out']}}</a></td>
+                                <td><a class="report-list-item" href="#"> {{$report['office_hour']}}</a></td>
                             </tr>
                         @endforeach
                     </tbody>

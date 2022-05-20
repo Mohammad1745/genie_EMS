@@ -82,7 +82,46 @@ class ReportService extends ResponseService
 
                 $data[] = [
                     'id' => $employee->id,
+                    'user_id' => $user->id,
                     'username' => $user->username,
+                    'check_in' => $checkIn,
+                    'check_out' => $checkOut,
+                    'office_hour' => $officeHour,
+                ];
+            }
+
+            return $data;
+        } catch (\Exception $exception) {
+            return [];
+        }
+    }
+    public function employeeReport (int $userId): array
+    {
+        try {
+            $data = [];
+            $employee = $this->employeeService->firstWhere(['owner_id'=> Auth::id(), 'user_id'=>$userId]);
+            if (!isset($employee)) {
+                return [];
+            }
+
+            $attendanceData = $this->employeeAttendanceService->getWhere(['employee_id' => $employee->id]);
+
+            foreach ($attendanceData as $attendance) {
+                $user = $employee->user;
+                $checkIn = "Not Checked In";
+                $checkOut = "Not Checked In";
+                $officeHour = 0;
+                $checkIn = (new Carbon($attendance->check_in))->format('g:i A');
+                if (!is_null($attendance->check_out)) {
+                    $checkOut = (new Carbon($attendance->check_out))->format('g:i A');
+                    $officeHour = $attendance->office_hour<1 ?
+                        $attendance->office_hour*60 ." Minutes"
+                        : $attendance->office_hour ." Hours";
+                }
+
+                $data[] = [
+                    'id' => $employee->id,
+                    'date' => $attendance->created_at,
                     'check_in' => $checkIn,
                     'check_out' => $checkOut,
                     'office_hour' => $officeHour,

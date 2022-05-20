@@ -41,4 +41,14 @@ class ReportController extends Controller
         $data['reports'] = $this->service->report($data['date']);
         return view('owner.report.index', $data);
     }
+
+    /**
+     * @param $userId
+     * @return Factory|View|Application
+     */
+    public function employeeReport ($userId): Factory|View|Application
+    {
+        $data['reports'] = $this->service->employeeReport($userId);
+        return view('owner.report.individual', $data);
+    }
 }
