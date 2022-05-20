@@ -8,10 +8,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
+                        <a class="nav-link {{Route::currentRouteName() == 'login' ? 'active' : ''}}" href="{{route('login')}}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('signup')}}">Sign Up</a>
+                        <a class="nav-link {{Route::currentRouteName() == 'signup' ? 'active' : ''}}" href="{{route('signup')}}">Sign Up</a>
                     </li>
                 </ul>
             </div>

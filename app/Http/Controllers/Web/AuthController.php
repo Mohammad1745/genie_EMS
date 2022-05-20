@@ -29,6 +29,14 @@ class AuthController extends Controller
     /**
      * @return Application|Factory|View
      */
+    public function login (): View|Factory|Application
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * @return Application|Factory|View
+     */
     public function signup (): View|Factory|Application
     {
         return view('auth.signup');
