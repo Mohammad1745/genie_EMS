@@ -4,6 +4,7 @@ namespace App\Http\Services\Feature\Auth;
 
 use App\Http\Services\Base\UserService;
 use App\Http\Services\ResponseService;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AuthService extends ResponseService
@@ -26,6 +27,24 @@ class AuthService extends ResponseService
      * @param object $request
      * @return array
      */
+    public function loginProcess (object $request): array
+    {
+        try {
+            if (Auth::attempt( $this->_credentials( $request->only('email', 'password')))){
+
+                return $this->response()->success('Logged In Successfully.');
+            } else {
+                return $this->response()->error('Wrong Email Or Password');
+            }
+        } catch (\Exception $exception) {
+            return $this->response()->error( $exception->getMessage());
+        }
+    }
+
+    /**
+     * @param object $request
+     * @return array
+     */
     public function signupProcess (object $request): array
     {
         try {
@@ -41,6 +60,21 @@ class AuthService extends ResponseService
 
             return $this->response()->error( $exception->getMessage());
         }
+    }
+
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    private function _credentials (array $data) : array {
+        return filter_var( $data['email'], FILTER_VALIDATE_EMAIL) ? [
+            'email' => $data['email'],
+            'password' => $data['password']
+        ] : [
+            'username' => $data['email'],
+            'password' => $data['password']
+        ];
     }
 
 }

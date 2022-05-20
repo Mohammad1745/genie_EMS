@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Requests\Web\LoginRequest;
 use App\Http\Requests\Web\SignupRequest;
 use App\Http\Services\Feature\Auth\AuthService;
 use Illuminate\Contracts\Foundation\Application;
@@ -9,6 +10,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -32,6 +34,15 @@ class AuthController extends Controller
     public function login (): View|Factory|Application
     {
         return view('auth.login');
+    }
+
+    /**
+     * @param LoginRequest $request
+     * @return RedirectResponse
+     */
+    protected function loginProcess(LoginRequest $request): RedirectResponse
+    {
+        return $this->webResponse( $this->service->loginProcess( $request), 'home');
     }
 
     /**

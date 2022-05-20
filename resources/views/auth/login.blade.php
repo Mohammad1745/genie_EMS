@@ -11,10 +11,10 @@
 
             <div class="form-header text-center fw-bold"> Owner Sign Up </div>
 
-            {{ Form::open(['route'=> 'signupProcess','method' => 'post', 'id' => 'auth_form', 'class' => 'main-form']) }}
+            {{ Form::open(['route'=> 'loginProcess','method' => 'post', 'id' => 'auth_form', 'class' => 'main-form']) }}
                 <div class="form-group my-2">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" value="{{old('email')}}" required placeholder="john@xyz.com">
+                    <label for="email">Email/Username</label>
+                    <input type="text" class="form-control" name="email" value="{{old('email')}}" required placeholder="john@xyz.com">
                     @if (isset($errors) && $errors->has('email'))
                         <span class="text-danger"><strong>{{ $errors->first('email') }}</strong></span>
                     @endif

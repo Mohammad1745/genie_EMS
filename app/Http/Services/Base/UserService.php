@@ -30,7 +30,7 @@ class UserService extends Service
                 'username' => $data['username'],
                 'email' => $data['email'],
                 'verification_code' => $randNo,
-                'password' => $data['password'],
+                'password' => Hash::make($data['password']),
                 'role' => OWNER_ROLE,
             );
         }
