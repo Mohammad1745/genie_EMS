@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Web\Owner\EmployeeController;
+use App\Http\Controllers\Web\Employee\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*

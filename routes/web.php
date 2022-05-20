@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $user = Auth::user();
+    if ($user) {
+        return $user->role==OWNER_ROLE ?
+            redirect(route('owner.employee'))
+            : redirect(route('employee.dashboard'));
+    } else {
+        return redirect(route('login'));
+    }
 })->name('home');
