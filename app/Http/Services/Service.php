@@ -88,12 +88,13 @@ class Service
 
     /**
      * @param Carbon $date
+     * @param array $where
      * @param array $fields
      * @return mixed
      */
-    public function whereDate (Carbon $date, array $fields=[])
+    public function whereDate (Carbon $date, array $where, array $fields=[])
     {
-        return $this->repository->whereDate( $date, $fields);
+        return $this->repository->whereDate( $date, $where, $fields);
     }
 
     /**
