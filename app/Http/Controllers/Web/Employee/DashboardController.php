@@ -31,7 +31,8 @@ class DashboardController extends Controller
      */
     public function index (): Factory|View|Application
     {
-        return view('employee.dashboard.index');
+        $data['attendanceStatus'] = $this->service->getAttendanceStatus();
+        return view('employee.dashboard.index', $data);
     }
 
     /**

@@ -17,6 +17,24 @@ function userRoles($input = null): mixed
         return $output[$input];
     }
 }
+/**
+ * @param null $input
+ * @return array|mixed
+ */
+function attendanceStatus($input = null): mixed
+{
+    $output = [
+        NOT_CHECKED_IN => __('Not Checked In'),
+        CHECKED_IN => __('Checked In'),
+        CHECKED_OUT => __('Checked Out'),
+    ];
+
+    if (is_null($input)) {
+        return $output;
+    } else {
+        return $output[$input];
+    }
+}
 
 /**
  * @param int $length

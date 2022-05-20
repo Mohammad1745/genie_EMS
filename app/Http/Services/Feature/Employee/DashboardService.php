@@ -26,6 +26,25 @@ class DashboardService extends ResponseService
     }
 
     /**
+     * @return int
+     */
+    public function getAttendanceStatus (): int
+    {
+        try {
+            $data = $this->employeeAttendanceService->whereDate(Carbon::today());
+            if(count($data)==0){
+                return NOT_CHECKED_IN;
+            }
+            if (is_null($data[0]->check_out)) {
+                return CHECKED_IN;
+            }
+            return CHECKED_OUT;
+        } catch (\Exception $exception) {
+            return NOT_CHECKED_IN;
+        }
+    }
+
+    /**
      * @return array
      */
     public function checkIn (): array
