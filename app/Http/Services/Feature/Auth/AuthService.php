@@ -65,7 +65,7 @@ class AuthService extends ResponseService
 
             DB::commit();
 
-            return $this->response()->success(__("Successfully signed up as a ". userRoles( $user->role).". Verification Code has been sent to ".$user->email."."));
+            return $this->response()->success(__("Successfully signed up ."));
         } catch (\Exception $exception) {
             DB::rollBack();
 
