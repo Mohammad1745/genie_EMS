@@ -22,6 +22,18 @@ class EmployeeService extends ResponseService
         $this->userService = $userService;
     }
 
+    /**
+     * @return mixed
+     */
+    public function employeeList (): mixed
+    {
+        try {
+            $employees = $this->userService->getWhere(['role' => EMPLOYEE_ROLE], ['id', 'username']);
+            return $employees->toArray();
+        } catch (\Exception $exception) {
+            return [];
+        }
+    }
 
     /**
      * @param object $request

@@ -31,7 +31,8 @@ class EmployeeController extends Controller
      */
     public function index (): Factory|View|Application
     {
-        return view('owner.employee.index');
+        $data['employees'] = $this->service->employeeList();
+        return view('owner.employee.index', $data);
     }
 
     /**
