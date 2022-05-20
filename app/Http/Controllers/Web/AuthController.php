@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use App\Http\Requests\Web\LoginRequest;
-use App\Http\Requests\Web\ResetPasswordRequest;
-use App\Http\Requests\Web\SendResetPasswordCodeRequest;
-use App\Http\Services\Auth\AuthService;
+use App\Http\Services\Feature\Auth\AuthService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
