@@ -12,7 +12,7 @@
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
 
-    <link rel="stylesheet" href="{{asset('assets/css/owner.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     @yield('style')
     <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
 </head>
