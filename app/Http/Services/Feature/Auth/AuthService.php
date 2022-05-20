@@ -42,6 +42,17 @@ class AuthService extends ResponseService
     }
 
     /**
+     * @return array
+     */
+    public function logOut(): array
+    {
+        Auth::logout();
+        session()->flush();
+
+        return $this->response()->error('Logged out successfully');
+    }
+
+    /**
      * @param object $request
      * @return array
      */

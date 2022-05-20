@@ -40,9 +40,9 @@ class AuthController extends Controller
      * @param LoginRequest $request
      * @return RedirectResponse
      */
-    protected function loginProcess(LoginRequest $request): RedirectResponse
+    public function loginProcess(LoginRequest $request): RedirectResponse
     {
-        return $this->webResponse( $this->service->loginProcess( $request), 'home');
+        return $this->webResponse( $this->service->loginProcess( $request), 'owner.employee');
     }
 
     /**
@@ -57,8 +57,16 @@ class AuthController extends Controller
      * @param SignupRequest $request
      * @return RedirectResponse
      */
-    protected function signupProcess(SignupRequest $request): RedirectResponse
+    public function signupProcess(SignupRequest $request): RedirectResponse
     {
-        return $this->webResponse( $this->service->signupProcess( $request), 'home');
+        return $this->webResponse( $this->service->signupProcess( $request), 'owner.employee');
+    }
+
+    /**
+     * @return RedirectResponse
+     */
+    public function logOut(): RedirectResponse
+    {
+        return $this->webResponse($this->service->logOut(), '/');
     }
 }
