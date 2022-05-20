@@ -20,7 +20,7 @@
 <body>
 @include('owner.layout.header')
 
-<div class="container-md vh-100">
+<div class="container-md" style="padding-top: 60px">
     @include('components.alert')
     @yield('content')
 </div>

@@ -8,10 +8,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link {{Route::currentRouteName() == 'employees' ? 'active' : ''}}" href="{{route('employees')}}">Employees</a>
+                        <a class="nav-link {{Route::currentRouteName() == 'owner.employee' ? 'active' : ''}}" href="{{route('owner.employee')}}">Employees</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{Route::currentRouteName() == 'reports' ? 'active' : ''}}" href="{{route('reports')}}">Reports</a>
+                        <a class="nav-link {{Route::currentRouteName() == 'owner.report' ? 'active' : ''}}" href="{{route('owner.report')}}">Reports</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('logout')}}">Logout</a>
