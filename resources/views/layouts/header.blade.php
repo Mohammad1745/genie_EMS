@@ -1,4 +1,4 @@
-<header>
+<header class=" position-fixed vw-100">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-md">
             <a class="navbar-brand" href="#">Genie EMS</a>

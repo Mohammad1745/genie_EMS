@@ -20,7 +20,7 @@
 <body>
     @include('layouts.header')
 
-    <div class="container-md">
+    <div class="container-md vh-100">
         @include('layouts.alert')
         @yield('content')
     </div>
