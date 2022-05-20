@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Web\AuthController;
+use App\Http\Controllers\Web\Owner\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,11 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/employees', function(){
-    return 'Employee List';
-})->name('employees');
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employee');
 
 
 Route::get('/reports', function(){
     return 'Reports';
-})->name('reports');
+})->name('report');
