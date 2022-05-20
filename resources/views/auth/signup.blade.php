@@ -45,6 +45,8 @@
                     <button class="btn btn-primary" type="submit">{{__('Sign Up')}}</button>
                 </div>
             {{ Form::close() }}
+
+            <div class="form-footer text-center text-secondary mt-2"> Already have an account? Then <a class="" href="{{route('login')}}">Login</a>.</div>
         </div>
     </div>
 @endsection
