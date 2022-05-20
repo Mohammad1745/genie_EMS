@@ -19,12 +19,16 @@ class ReportService extends ResponseService
      * @var \App\Http\Services\Base\EmployeeService
      */
     private \App\Http\Services\Base\EmployeeService $employeeService;
+    /**
+     * @var EmployeeAttendanceService
+     */
     private EmployeeAttendanceService $employeeAttendanceService;
 
     /**
      * AuthService constructor.
      * @param UserService $userService
      * @param \App\Http\Services\Base\EmployeeService $employeeService
+     * @param EmployeeAttendanceService $employeeAttendanceService
      */
     public function __construct (UserService $userService, \App\Http\Services\Base\EmployeeService $employeeService, EmployeeAttendanceService $employeeAttendanceService)
     {
