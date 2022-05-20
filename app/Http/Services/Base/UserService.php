@@ -21,19 +21,17 @@ class UserService extends Service
 
     /**
      * @param array $data
-     * @param string $provider
      * @return array
      */
-    public function formatUserDataForSignup (array $data, string $provider): array
+    public function formatUserDataForSignup (array $data, string $randNo): array
     {
         if ($data){
             return array(
-                'name' => $data['name'],
+                'username' => $data['username'],
                 'email' => $data['email'],
-                'avatar' => $data['avatar'],
-                'provider' => $provider,
-                'provider_id' => $data['id'],
-                'role' => $data['role'] ? $data['role'] : OWNER_ROLE,
+                'verification_code' => $data['$randNo'],
+                'password' => $data['password'],
+                'role' => OWNER_ROLE,
             );
         }
         return [];
