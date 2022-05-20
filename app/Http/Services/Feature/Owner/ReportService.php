@@ -68,7 +68,7 @@ class ReportService extends ResponseService
                 $user = $employee->user;
                 $attendanceData = $this->employeeAttendanceService->whereDate(Carbon::parse($date), ['employee_id' => $employee->id]);
                 $checkIn = "Not Checked In";
-                $checkOut = "Not Checked In";
+                $checkOut = "Not Checked Out";
                 $officeHour = 0;
                 if(count($attendanceData)>0){
                     $checkIn = (new Carbon($attendanceData[0]->check_in))->format('g:i A');
@@ -95,6 +95,26 @@ class ReportService extends ResponseService
             return [];
         }
     }
+
+    /**
+     * @param int $userId
+     * @return string
+     */
+    public function employeeUsername (int $userId): string
+    {
+        try {
+            $user = $this->userService->firstWhere(['id' => $userId]);
+            if ($user) return $user->username;
+            else return 'Not Found';
+        } catch (\Exception $exception) {
+            return 'Not Found';
+        }
+    }
+
+    /**
+     * @param int $userId
+     * @return array
+     */
     public function employeeReport (int $userId): array
     {
         try {
@@ -109,7 +129,7 @@ class ReportService extends ResponseService
             foreach ($attendanceData as $attendance) {
                 $user = $employee->user;
                 $checkIn = "Not Checked In";
-                $checkOut = "Not Checked In";
+                $checkOut = "Not Checked Out";
                 $officeHour = 0;
                 $checkIn = (new Carbon($attendance->check_in))->format('g:i A');
                 if (!is_null($attendance->check_out)) {

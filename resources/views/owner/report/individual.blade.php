@@ -33,7 +33,7 @@
         <div class="d-flex justify-content-start">
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    User Name: {{' '}}
+                    User Name: {{$username}}
                 </button>
             </div>
         </div>
@@ -52,10 +52,10 @@
                     <tbody>
                         @foreach($reports as $key => $report)
                             <tr>
-                                <td><a class="report-list-item" href="#"> {{$report['date']}}</a></td>
-                                <td><a class="report-list-item" href="#"> {{$report['check_in']}}</a></td>
-                                <td><a class="report-list-item" href="#"> {{$report['check_out']}}</a></td>
-                                <td><a class="report-list-item" href="#"> {{$report['office_hour']}}</a></td>
+                                <td> {{$report['date']}} </td>
+                                <td> {{$report['check_in']}} </td>
+                                <td> {{$report['check_out']}} </td>
+                                <td> {{$report['office_hour']}} </td>
                             </tr>
                         @endforeach
                     </tbody>
