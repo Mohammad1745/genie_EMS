@@ -13,7 +13,7 @@
 @section('content')
     <div class=" mt-3 ">
         <div class="d-flex justify-content-end">
-            <a class="btn btn-primary" href="#">Add Employee</a>
+            <a class="btn btn-primary" href="{{route('owner.employee.create')}}">Add Employee</a>
         </div>
         <div class="d-flex flex-column ms-0 mt-1">
             <div class="employee-list-item my-1 p-2 rounded"> Rifat123</div>

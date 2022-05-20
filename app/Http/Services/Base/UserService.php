@@ -21,6 +21,7 @@ class UserService extends Service
 
     /**
      * @param array $data
+     * @param string $randNo
      * @return array
      */
     public function formatUserDataForSignup (array $data, string $randNo): array
@@ -32,6 +33,24 @@ class UserService extends Service
                 'verification_code' => $randNo,
                 'password' => Hash::make($data['password']),
                 'role' => OWNER_ROLE,
+            );
+        }
+        return [];
+    }
+
+    /**
+     * @param array $data
+     * @return array
+     */
+    public function formatUserDataAsEmployee (array $data): array
+    {
+        if ($data){
+            return array(
+                'username' => $data['username'],
+                'email' => $data['email'],
+                'email_verified' => true,
+                'password' => Hash::make($data['password']),
+                'role' => EMPLOYEE_ROLE,
             );
         }
         return [];

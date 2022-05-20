@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\Web\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Web\Owner\StoreEmployeeRequest;
 use App\Http\Services\Feature\Owner\EmployeeService;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class EmployeeController extends Controller
 {
@@ -21,8 +26,28 @@ class EmployeeController extends Controller
         $this->service = $service;
     }
 
-    public function index ()
+    /**
+     * @return Factory|View|Application
+     */
+    public function index (): Factory|View|Application
     {
-        return view('owner.employee');
+        return view('owner.employee.index');
+    }
+
+    /**
+     * @return Factory|View|Application
+     */
+    public function create (): Factory|View|Application
+    {
+        return view('owner.employee.add');
+    }
+
+    /**
+     * @param StoreEmployeeRequest $request
+     * @return RedirectResponse
+     */
+    public function store(StoreEmployeeRequest $request): RedirectResponse
+    {
+        return $this->webResponse( $this->service->storeEmployee( $request), 'owner.employee');
     }
 }
