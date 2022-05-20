@@ -29,7 +29,7 @@ class UserService extends Service
             return array(
                 'username' => $data['username'],
                 'email' => $data['email'],
-                'verification_code' => $data['$randNo'],
+                'verification_code' => $randNo,
                 'password' => $data['password'],
                 'role' => OWNER_ROLE,
             );

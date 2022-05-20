@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Http\Requests\Web\SignupRequest;
 use App\Http\Services\Feature\Auth\AuthService;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -14,7 +15,7 @@ class AuthController extends Controller
     /**
      * @var AuthService
      */
-    private $service;
+    private AuthService $service;
 
     /**
      * AuthController constructor.
@@ -31,5 +32,14 @@ class AuthController extends Controller
     public function signup (): View|Factory|Application
     {
         return view('auth.signup');
+    }
+
+    /**
+     * @param SignupRequest $request
+     * @return RedirectResponse
+     */
+    protected function signupProcess(SignupRequest $request): RedirectResponse
+    {
+        return $this->webResponse( $this->service->signupProcess( $request), 'home');
     }
 }

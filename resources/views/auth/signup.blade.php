@@ -11,7 +11,7 @@
 
             <div class="form-header text-center fw-bold"> Owner Sign Up </div>
 
-            {{ Form::open(['method' => 'post', 'id' => 'auth_form', 'class' => 'main-form']) }}
+            {{ Form::open(['route'=> 'signupProcess','method' => 'post', 'id' => 'auth_form', 'class' => 'main-form']) }}
                 <div class="form-group my-2">
                     <label for="username">Username</label>
                     <input type="text" class="form-control" name="username" value="{{old('username')}}" required autocomplete="off" placeholder="John22">

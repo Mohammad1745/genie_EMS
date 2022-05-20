@@ -4,16 +4,14 @@ namespace App\Http\Services\Feature\Auth;
 
 use App\Http\Services\Base\UserService;
 use App\Http\Services\ResponseService;
-use Illuminate\Http\RedirectResponse as RedirectResponseAlias;
-use Laravel\Socialite\Facades\Socialite;
-use Symfony\Component\HttpFoundation\RedirectResponse;
+use Illuminate\Support\Facades\DB;
 
 class AuthService extends ResponseService
 {
     /**
      * @var UserService
      */
-    private $userService;
+    private UserService $userService;
 
     /**
      * AuthService constructor.
@@ -24,5 +22,25 @@ class AuthService extends ResponseService
         $this->userService = $userService;
     }
 
+    /**
+     * @param object $request
+     * @return array
+     */
+    public function signupProcess (object $request): array
+    {
+        try {
+            DB::beginTransaction();
+            $randNo = randomNumber(6);
+            $user = $this->userService->create( $this->userService->formatUserDataForSignup( $request->all(), $randNo));
+
+            DB::commit();
+
+            return $this->response()->success(__("Successfully signed up as a ". userRoles( $user->role).". Verification Code has been sent to ".$user->email."."));
+        } catch (\Exception $exception) {
+            DB::rollBack();
+
+            return $this->response()->error( $exception->getMessage());
+        }
+    }
 
 }
