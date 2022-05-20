@@ -52,3 +52,18 @@ function randomNumber(int $length = 10): string
 
     return $response;
 }
+
+function date_range($first, $last, $output_format = 'd/m/Y', $step = '+1 day' ) {
+
+    $dates = array();
+    $current = strtotime($first);
+    $last = strtotime($last);
+
+    while( $current <= $last ) {
+
+        $dates[] = date($output_format, $current);
+        $current = strtotime($step, $current);
+    }
+
+    return $dates;
+}

@@ -30,8 +30,17 @@
 
 @section('content')
     <div class=" mt-3 ">
-        <div class="d-flex justify-content-end">
-
+        <div class="d-flex justify-content-start">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Date: {{$date}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    @foreach($dates as $date)
+                        <li><a class="dropdown-item" href="{{route('owner.report', ['date' => $date])}}">{{$date}}</a></li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
 
         <div class="d-flex flex-column ms-0 mt-1 wrapper rounded">

@@ -6,6 +6,9 @@ use App\Http\Services\Base\EmployeeAttendanceService;
 use App\Http\Services\Base\UserService;
 use App\Http\Services\ResponseService;
 use Carbon\Carbon;
+use DateInterval;
+use DatePeriod;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -40,7 +43,22 @@ class ReportService extends ResponseService
     /**
      * @return array
      */
-    public function report (): array
+    public function dateList (): array
+    {
+        try {
+            $firstAttendance = $this->employeeAttendanceService->firstWhere([]);
+            $lastAttendance = $this->employeeAttendanceService->lastWhere([]);
+            return date_range($firstAttendance->created_at, $lastAttendance->created_at, 'd-m-Y');
+        } catch (\Exception $exception) {
+            return [];
+        }
+    }
+
+    /**
+     * @param string $date
+     * @return array
+     */
+    public function report (string $date): array
     {
         try {
             $data = [];
@@ -48,7 +66,7 @@ class ReportService extends ResponseService
 
             foreach ($employees as $employee) {
                 $user = $employee->user;
-                $attendanceData = $this->employeeAttendanceService->whereDate(Carbon::today(), ['employee_id' => $employee->id]);
+                $attendanceData = $this->employeeAttendanceService->whereDate(Carbon::parse($date), ['employee_id' => $employee->id]);
                 $checkIn = "Not Checked In";
                 $checkOut = "Not Checked In";
                 $officeHour = 0;
