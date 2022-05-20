@@ -43,6 +43,11 @@ class RouteServiceProvider extends ServiceProvider
                 ->name('owner.')
                 ->middleware(['web', 'auth', 'owner'])
                 ->group(base_path('routes/web/owner.php'));
+
+            Route::prefix('employee')
+                ->name('employee.')
+                ->middleware(['web', 'auth', 'employee'])
+                ->group(base_path('routes/web/employee.php'));
         });
     }
 
